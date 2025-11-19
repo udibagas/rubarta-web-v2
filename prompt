@@ -1,0 +1,15 @@
+Create website for company profile with following requirement
+
+- Stack: NuxtJs and @nuxt/ui for ui library
+- I want 1 site but for 2 company
+  - Rubarta Prima Abadi (Heavy equipment provider)
+  - Rubarta Logistic Indonesia (Supply Chain Solution)
+- On home page create single page to select company
+- Create single page for each company with the following content
+  - Navigation Menu
+  - Hero
+  - About
+  - Products / Service
+  - Portfolio
+  - Customers
+  - Contact
