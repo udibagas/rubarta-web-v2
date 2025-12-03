@@ -21,7 +21,7 @@
         >
           <template #header>
             <div class="space-y-2">
-              <UBadge :color="primaryColor" variant="subtle">
+              <UBadge color="primary" variant="subtle">
                 {{ item.category }}
               </UBadge>
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white">

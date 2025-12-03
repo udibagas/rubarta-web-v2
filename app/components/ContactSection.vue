@@ -133,9 +133,17 @@
 
         <div class="animate-on-scroll slide-in-right stagger-3">
           <UCard class="hover:shadow-lg transition-shadow duration-300">
-            <form @submit.prevent="handleSubmit" class="space-y-4">
+            <form
+              @submit.prevent="handleSubmit"
+              class="space-y-4 flex flex-col"
+            >
               <UFormGroup label="Name" required>
-                <UInput v-model="form.name" placeholder="Your name" size="lg" />
+                <UInput
+                  v-model="form.name"
+                  placeholder="Your name"
+                  size="lg"
+                  class="w-full"
+                />
               </UFormGroup>
 
               <UFormGroup label="Email" required>
@@ -144,6 +152,7 @@
                   type="email"
                   placeholder="your@email.com"
                   size="lg"
+                  class="w-full"
                 />
               </UFormGroup>
 
@@ -152,6 +161,7 @@
                   v-model="form.phone"
                   placeholder="Your phone number"
                   size="lg"
+                  class="w-full"
                 />
               </UFormGroup>
 
@@ -161,6 +171,7 @@
                   placeholder="Your message"
                   :rows="5"
                   size="lg"
+                  class="w-full"
                 />
               </UFormGroup>
 
