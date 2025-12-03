@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 p-4"
+    class="min-h-screen flex items-center justify-center bg-linear-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 p-4"
   >
     <div class="max-w-6xl w-full">
       <div class="text-center mb-12 animate-on-scroll fade-in-up">
@@ -20,7 +20,7 @@
         >
           <template #header>
             <div
-              class="flex flex-col items-center justify-center h-48 bg-gradient-to-br from-green-600 to-emerald-500 space-y-4"
+              class="flex flex-col items-center justify-center h-48 bg-linear-to-br from-green-600 to-emerald-500 space-y-4"
             >
               <img src="/logo.png" alt="Rubarta Logo" class="h-20 w-20" />
               <UIcon name="i-heroicons-truck" class="w-16 h-16 text-white" />
@@ -57,7 +57,7 @@
         >
           <template #header>
             <div
-              class="flex flex-col items-center justify-center h-48 bg-gradient-to-br from-emerald-600 to-green-500 space-y-4"
+              class="flex flex-col items-center justify-center h-48 bg-linear-to-br from-emerald-600 to-green-500 space-y-4"
             >
               <img src="/logo.png" alt="Rubarta Logo" class="h-20 w-20" />
               <UIcon name="i-heroicons-cube" class="w-16 h-16 text-white" />

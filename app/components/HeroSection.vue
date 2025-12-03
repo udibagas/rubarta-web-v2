@@ -4,7 +4,7 @@
     class="relative min-h-screen flex items-center justify-center overflow-hidden"
   >
     <div
-      class="absolute inset-0 bg-gradient-to-br"
+      class="absolute inset-0 bg-linear-to-br"
       :class="gradientClass"
       :style="{ transform: `translateY(${scrollY * 0.5}px)` }"
     ></div>

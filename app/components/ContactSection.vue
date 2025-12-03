@@ -17,7 +17,7 @@
           <UCard class="hover:shadow-lg transition-shadow duration-300">
             <div class="flex items-start space-x-4">
               <div
-                class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                class="w-12 h-12 rounded-lg flex items-center justify-center shrink-0"
                 :class="iconBgClass"
               >
                 <UIcon name="i-heroicons-envelope" class="w-6 h-6 text-white" />
@@ -41,7 +41,7 @@
           <UCard class="hover:shadow-lg transition-shadow duration-300">
             <div class="flex items-start space-x-4">
               <div
-                class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                class="w-12 h-12 rounded-lg flex items-center justify-center shrink-0"
                 :class="iconBgClass"
               >
                 <UIcon name="i-heroicons-phone" class="w-6 h-6 text-white" />
@@ -65,7 +65,7 @@
           <UCard class="hover:shadow-lg transition-shadow duration-300">
             <div class="flex items-start space-x-4">
               <div
-                class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                class="w-12 h-12 rounded-lg flex items-center justify-center shrink-0"
                 :class="iconBgClass"
               >
                 <UIcon name="i-heroicons-map-pin" class="w-6 h-6 text-white" />
@@ -89,7 +89,7 @@
           >
             <div class="flex items-start space-x-4">
               <div
-                class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                class="w-12 h-12 rounded-lg flex items-center justify-center shrink-0"
                 :class="iconBgClass"
               >
                 <UIcon name="i-heroicons-share" class="w-6 h-6 text-white" />
@@ -104,7 +104,7 @@
                   <UButton
                     v-if="contact.social.facebook"
                     icon="i-simple-icons-facebook"
-                    color="blue"
+                    color="secondary"
                     :to="contact.social.facebook"
                     target="_blank"
                     size="lg"
@@ -112,7 +112,7 @@
                   <UButton
                     v-if="contact.social.instagram"
                     icon="i-simple-icons-instagram"
-                    color="pink"
+                    color="error"
                     :to="contact.social.instagram"
                     target="_blank"
                     size="lg"
@@ -120,7 +120,7 @@
                   <UButton
                     v-if="contact.social.linkedin"
                     icon="i-simple-icons-linkedin"
-                    color="blue"
+                    color="secondary"
                     :to="contact.social.linkedin"
                     target="_blank"
                     size="lg"
@@ -159,12 +159,12 @@
                 <UTextarea
                   v-model="form.message"
                   placeholder="Your message"
-                  rows="5"
+                  :rows="5"
                   size="lg"
                 />
               </UFormGroup>
 
-              <UButton type="submit" size="lg" block :color="primaryColor">
+              <UButton type="submit" size="lg" block color="primary">
                 Send Message
               </UButton>
             </form>

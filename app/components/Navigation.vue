@@ -68,7 +68,7 @@ const mobileMenuOpen = ref(false);
 const menuItems = [
   { id: "hero", label: "Home" },
   { id: "about", label: "About" },
-  { id: "products", label: "Services" },
+  { id: "products", label: "Products & Services" },
   { id: "portfolio", label: "Portfolio" },
   { id: "customers", label: "Customers" },
   { id: "contact", label: "Contact" },
