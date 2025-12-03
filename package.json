@@ -1,5 +1,8 @@
 {
   "name": "rubarta-web-v2",
+  "engines": {
+    "node": ">=22"
+  },
   "type": "module",
   "private": true,
   "scripts": {
