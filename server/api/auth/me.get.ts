@@ -1,24 +1,13 @@
-import prisma from "../utils/prisma";
+import prisma from "../../utils/prisma";
 
 export default defineEventHandler(async (event) => {
-  const path = event.path;
-
-  // Skip auth for non-admin API routes and auth endpoints
-  if (!path.startsWith("/api/admin") || path.startsWith("/api/auth")) {
-    return;
-  }
-
-  // Check session cookie
   const sessionId = getCookie(event, "session");
 
   if (!sessionId) {
-    throw createError({
-      statusCode: 401,
-      message: "Unauthorized - Please login",
-    });
+    return null;
   }
 
-  // Verify session
+  // Find session and user
   const session = await prisma.session.findUnique({
     where: { id: sessionId },
     include: { user: true },
@@ -30,14 +19,10 @@ export default defineEventHandler(async (event) => {
       await prisma.session.delete({ where: { id: sessionId } });
     }
     deleteCookie(event, "session");
-    throw createError({
-      statusCode: 401,
-      message: "Session expired - Please login again",
-    });
+    return null;
   }
 
-  // Attach user to event context
-  event.context.user = {
+  return {
     id: session.user.id,
     email: session.user.email,
     name: session.user.name,

@@ -108,6 +108,17 @@
               />
               Visit Website
             </NuxtLink>
+
+            <button
+              @click="handleLogout"
+              class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+            >
+              <UIcon
+                name="i-heroicons-arrow-right-on-rectangle"
+                class="w-5 h-5"
+              />
+              Logout
+            </button>
           </div>
         </nav>
 
@@ -115,6 +126,14 @@
         <div
           class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
         >
+          <div v-if="user" class="mb-2 px-2">
+            <p class="text-xs font-medium text-gray-700 dark:text-gray-300">
+              {{ user.name }}
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              {{ user.email }}
+            </p>
+          </div>
           <div class="text-xs text-gray-500 dark:text-gray-400 text-center">
             <p>&copy; 2025 Rubarta</p>
             <p class="mt-1">Content Management System</p>
@@ -141,13 +160,26 @@
 
 <script setup lang="ts">
 const route = useRoute();
+const router = useRouter();
 const mobileMenuOpen = ref(false);
+const user = ref<any>(null);
 
 const isActive = (path: string) => {
   if (path === "/admin") {
     return route.path === "/admin";
   }
   return route.path.startsWith(path);
+};
+
+// Fetch current user
+onMounted(async () => {
+  const { data } = await useFetch("/api/auth/me");
+  user.value = data.value;
+});
+
+const handleLogout = async () => {
+  await $fetch("/api/auth/logout", { method: "POST" });
+  router.push("/login");
 };
 
 // Close mobile menu on route change

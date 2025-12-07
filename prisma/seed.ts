@@ -1,3 +1,4 @@
+import * as bcrypt from "bcrypt";
 import {} from "dotenv/config";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "./generated/client/client";
@@ -294,7 +295,26 @@ async function main() {
     });
   }
 
-  console.log("Seeding finished.");
+  // Create default admin user
+  // Password: admin123
+  // In production, change this password immediately!
+  const passwordHash = await bcrypt.hash("admin123", 10);
+  const adminUser = await prisma.user.upsert({
+    where: { email: "admin@rubarta.com" },
+    update: {
+      passwordHash: passwordHash,
+    },
+    create: {
+      email: "admin@rubarta.com",
+      name: "Admin",
+      role: "admin",
+      // Hash of 'admin123' using bcrypt with salt rounds 10
+      passwordHash: passwordHash,
+    },
+  });
+
+  console.log("Created admin user:", adminUser.email);
+  console.log("Seeding completed successfully!");
 }
 
 main()

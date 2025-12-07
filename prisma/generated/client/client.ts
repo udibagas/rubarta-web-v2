@@ -59,3 +59,13 @@ export type Portfolio = Prisma.PortfolioModel
  * 
  */
 export type Customer = Prisma.CustomerModel
+/**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel
