@@ -1,0 +1,102 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Company {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  tagline     String
+  description String
+  logo        String?
+
+  // Hero section
+  heroTitle       String
+  heroSubtitle    String
+  heroDescription String
+  heroImage       String?
+
+  // About section
+  aboutTitle       String
+  aboutDescription String
+  aboutMission     String
+  aboutVision      String
+
+  // Contact
+  contactEmail    String
+  contactPhone    String
+  contactAddress  String
+  socialFacebook  String?
+  socialInstagram String?
+  socialLinkedin  String?
+  socialTwitter   String?
+
+  // Theme
+  themePrimaryColor   String
+  themeSecondaryColor String
+  themeGradientFrom   String?
+  themeGradientTo     String?
+
+  products   Product[]
+  portfolios Portfolio[]
+  customers  Customer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id          String  @id @default(cuid())
+  name        String
+  description String
+  image       String?
+  order       Int     @default(0)
+
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([companyId])
+}
+
+model Portfolio {
+  id          String  @id @default(cuid())
+  title       String
+  description String
+  category    String
+  image       String?
+  order       Int     @default(0)
+
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([companyId])
+}
+
+model Customer {
+  id    String  @id @default(cuid())
+  name  String
+  logo  String?
+  order Int     @default(0)
+
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([companyId])
+}

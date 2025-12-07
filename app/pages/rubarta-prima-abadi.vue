@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen">
+  <div v-if="company" class="min-h-screen">
     <ScrollToTop />
     <Navigation :company-name="company.name" :logo="company.logo" />
 
@@ -36,10 +36,11 @@
 </template>
 
 <script setup lang="ts">
-const { getCompany } = useCompanyData();
-const company = getCompany("rubarta-prima-abadi");
+const { data: company, error } = await useFetch(
+  "/api/companies/rubarta-prima-abadi"
+);
 
-if (!company) {
+if (error.value || !company.value) {
   throw createError({
     statusCode: 404,
     message: "Company not found",
@@ -47,7 +48,7 @@ if (!company) {
 }
 
 useHead({
-  title: `${company.name} - ${company.tagline}`,
-  meta: [{ name: "description", content: company.description }],
+  title: `${company.value.name} - ${company.value.tagline}`,
+  meta: [{ name: "description", content: company.value.description }],
 });
 </script>

@@ -6,7 +6,12 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center space-x-3">
           <NuxtLink to="/" class="flex items-center space-x-3">
-            <img v-if="logo" :src="logo" alt="Rubarta Logo" class="h-10 w-10" />
+            <img
+              v-if="logo || 'logo.png'"
+              :src="logo"
+              alt="Rubarta Logo"
+              class="h-10 w-10"
+            />
             <span class="text-2xl font-bold text-gray-900 dark:text-white">
               {{ companyName }}
             </span>

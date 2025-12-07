@@ -137,16 +137,16 @@
               @submit.prevent="handleSubmit"
               class="space-y-4 flex flex-col"
             >
-              <UFormGroup label="Name" required>
+              <UFormField label="Name" required>
                 <UInput
                   v-model="form.name"
                   placeholder="Your name"
                   size="lg"
                   class="w-full"
                 />
-              </UFormGroup>
+              </UFormField>
 
-              <UFormGroup label="Email" required>
+              <UFormField label="Email" required>
                 <UInput
                   v-model="form.email"
                   type="email"
@@ -154,18 +154,18 @@
                   size="lg"
                   class="w-full"
                 />
-              </UFormGroup>
+              </UFormField>
 
-              <UFormGroup label="Phone">
+              <UFormField label="Phone">
                 <UInput
                   v-model="form.phone"
                   placeholder="Your phone number"
                   size="lg"
                   class="w-full"
                 />
-              </UFormGroup>
+              </UFormField>
 
-              <UFormGroup label="Message" required>
+              <UFormField label="Message" required>
                 <UTextarea
                   v-model="form.message"
                   placeholder="Your message"
@@ -173,7 +173,7 @@
                   size="lg"
                   class="w-full"
                 />
-              </UFormGroup>
+              </UFormField>
 
               <UButton type="submit" size="lg" block color="primary">
                 Send Message

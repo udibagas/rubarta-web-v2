@@ -10,16 +10,28 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare && prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "bun prisma/seed.ts",
+    "db:studio": "prisma studio"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@nuxt/content": "^3.8.2",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.2.0",
+    "@prisma/adapter-pg": "^7.1.0",
+    "@prisma/client": "^7.0.1",
+    "@types/pg": "^8.15.6",
     "better-sqlite3": "^12.4.1",
     "nuxt": "^4.2.1",
+    "prisma": "^7.1.0",
     "typescript": "^5.9.3",
     "vue": "^3.5.24",
     "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1"
   }
 }

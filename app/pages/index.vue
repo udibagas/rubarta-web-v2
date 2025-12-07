@@ -92,6 +92,8 @@
 </template>
 
 <script setup lang="ts">
+const { data: companies } = await useFetch("/api/companies");
+
 const { observeElements } = useScrollAnimation();
 
 onMounted(() => {
