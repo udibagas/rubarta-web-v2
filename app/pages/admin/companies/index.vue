@@ -42,7 +42,7 @@
           </div>
         </template>
 
-        <form @submit.prevent="saveCompany">
+        <form @submit.prevent="saveCompany" id="company-form">
           <UTabs :items="tabs" class="w-full">
             <template #basic>
               <div class="space-y-6 p-4">
@@ -247,7 +247,12 @@
             >
               Cancel
             </UButton>
-            <UButton type="submit" color="primary" :loading="saving">
+            <UButton
+              type="submit"
+              color="primary"
+              :loading="saving"
+              form="company-form"
+            >
               {{ editingCompany ? "Update" : "Create" }}
             </UButton>
           </div>
