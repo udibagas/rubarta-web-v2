@@ -42,132 +42,203 @@
           </div>
         </template>
 
-        <form @submit.prevent="saveCompany" class="space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <UFormField label="Name" required>
-              <UInput v-model="form.name" placeholder="Company Name" />
-            </UFormField>
+        <form @submit.prevent="saveCompany">
+          <UTabs :items="tabs" class="w-full">
+            <template #basic>
+              <div class="space-y-6 p-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <UFormField label="Name" required>
+                    <UInput
+                      v-model="form.name"
+                      placeholder="Company Name"
+                      class="w-full"
+                    />
+                  </UFormField>
 
-            <UFormField label="Slug" required>
-              <UInput v-model="form.slug" placeholder="company-slug" />
-            </UFormField>
+                  <UFormField label="Slug" required>
+                    <UInput
+                      v-model="form.slug"
+                      placeholder="company-slug"
+                      class="w-full"
+                    />
+                  </UFormField>
 
-            <UFormField label="Tagline" class="md:col-span-2" required>
-              <UInput v-model="form.tagline" placeholder="Company tagline" />
-            </UFormField>
+                  <UFormField label="Tagline" class="md:col-span-2" required>
+                    <UInput
+                      v-model="form.tagline"
+                      placeholder="Company tagline"
+                      class="w-full"
+                    />
+                  </UFormField>
 
-            <UFormField label="Description" class="md:col-span-2" required>
-              <UTextarea v-model="form.description" :rows="3" />
-            </UFormField>
+                  <UFormField
+                    label="Description"
+                    class="md:col-span-2"
+                    required
+                  >
+                    <UTextarea
+                      v-model="form.description"
+                      :rows="3"
+                      class="w-full"
+                    />
+                  </UFormField>
 
-            <UFormField label="Logo URL">
-              <UInput v-model="form.logo" placeholder="https://..." />
-            </UFormField>
-          </div>
+                  <UFormField label="Logo URL">
+                    <UInput
+                      v-model="form.logo"
+                      placeholder="https://..."
+                      class="w-full"
+                    />
+                  </UFormField>
+                </div>
+              </div>
+            </template>
 
-          <div class="border-t pt-6">
-            <h4 class="text-lg font-semibold mb-4">Hero Section</h4>
-            <div class="grid grid-cols-1 gap-6">
-              <UFormField label="Hero Title" required>
-                <UInput v-model="form.heroTitle" />
-              </UFormField>
-              <UFormField label="Hero Subtitle" required>
-                <UInput v-model="form.heroSubtitle" />
-              </UFormField>
-              <UFormField label="Hero Description" required>
-                <UTextarea v-model="form.heroDescription" :rows="3" />
-              </UFormField>
-              <UFormField label="Hero Image URL">
-                <UInput v-model="form.heroImage" placeholder="https://..." />
-              </UFormField>
-            </div>
-          </div>
+            <template #hero>
+              <div class="space-y-6 p-4">
+                <UFormField label="Hero Title" required>
+                  <UInput v-model="form.heroTitle" class="w-full" />
+                </UFormField>
+                <UFormField label="Hero Subtitle" required>
+                  <UInput v-model="form.heroSubtitle" class="w-full" />
+                </UFormField>
+                <UFormField label="Hero Description" required>
+                  <UTextarea
+                    v-model="form.heroDescription"
+                    :rows="3"
+                    class="w-full"
+                  />
+                </UFormField>
+                <UFormField label="Hero Image URL">
+                  <UInput
+                    v-model="form.heroImage"
+                    placeholder="https://..."
+                    class="w-full"
+                  />
+                </UFormField>
+              </div>
+            </template>
 
-          <div class="border-t pt-6">
-            <h4 class="text-lg font-semibold mb-4">About Section</h4>
-            <div class="grid grid-cols-1 gap-6">
-              <UFormField label="About Title" required>
-                <UInput v-model="form.aboutTitle" />
-              </UFormField>
-              <UFormField label="About Description" required>
-                <UTextarea v-model="form.aboutDescription" :rows="3" />
-              </UFormField>
-              <UFormField label="Mission" required>
-                <UTextarea v-model="form.aboutMission" :rows="3" />
-              </UFormField>
-              <UFormField label="Vision" required>
-                <UTextarea v-model="form.aboutVision" :rows="3" />
-              </UFormField>
-            </div>
-          </div>
+            <template #about>
+              <div class="space-y-6 p-4">
+                <UFormField label="About Title" required>
+                  <UInput v-model="form.aboutTitle" class="w-full" />
+                </UFormField>
+                <UFormField label="About Description" required>
+                  <UTextarea
+                    v-model="form.aboutDescription"
+                    :rows="3"
+                    class="w-full"
+                  />
+                </UFormField>
+                <UFormField label="Mission" required>
+                  <UTextarea
+                    v-model="form.aboutMission"
+                    :rows="3"
+                    class="w-full"
+                  />
+                </UFormField>
+                <UFormField label="Vision" required>
+                  <UTextarea
+                    v-model="form.aboutVision"
+                    :rows="3"
+                    class="w-full"
+                  />
+                </UFormField>
+              </div>
+            </template>
 
-          <div class="border-t pt-6">
-            <h4 class="text-lg font-semibold mb-4">Contact Information</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <UFormField label="Email" required>
-                <UInput v-model="form.contactEmail" type="email" />
-              </UFormField>
-              <UFormField label="Phone" required>
-                <UInput v-model="form.contactPhone" />
-              </UFormField>
-              <UFormField label="Address" class="md:col-span-2" required>
-                <UTextarea v-model="form.contactAddress" :rows="2" />
-              </UFormField>
-              <UFormField label="Facebook">
-                <UInput
-                  v-model="form.socialFacebook"
-                  placeholder="https://facebook.com/..."
-                />
-              </UFormField>
-              <UFormField label="Instagram">
-                <UInput
-                  v-model="form.socialInstagram"
-                  placeholder="https://instagram.com/..."
-                />
-              </UFormField>
-              <UFormField label="LinkedIn">
-                <UInput
-                  v-model="form.socialLinkedin"
-                  placeholder="https://linkedin.com/..."
-                />
-              </UFormField>
-              <UFormField label="Twitter">
-                <UInput
-                  v-model="form.socialTwitter"
-                  placeholder="https://twitter.com/..."
-                />
-              </UFormField>
-            </div>
-          </div>
+            <template #contact>
+              <div class="space-y-6 p-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <UFormField label="Email" required>
+                    <UInput
+                      v-model="form.contactEmail"
+                      type="email"
+                      class="w-full"
+                    />
+                  </UFormField>
+                  <UFormField label="Phone" required>
+                    <UInput v-model="form.contactPhone" class="w-full" />
+                  </UFormField>
+                  <UFormField label="Address" class="md:col-span-2" required>
+                    <UTextarea
+                      v-model="form.contactAddress"
+                      :rows="2"
+                      class="w-full"
+                    />
+                  </UFormField>
+                  <UFormField label="Facebook">
+                    <UInput
+                      v-model="form.socialFacebook"
+                      placeholder="https://facebook.com/..."
+                      class="w-full"
+                    />
+                  </UFormField>
+                  <UFormField label="Instagram">
+                    <UInput
+                      v-model="form.socialInstagram"
+                      placeholder="https://instagram.com/..."
+                      class="w-full"
+                    />
+                  </UFormField>
+                  <UFormField label="LinkedIn">
+                    <UInput
+                      v-model="form.socialLinkedin"
+                      placeholder="https://linkedin.com/..."
+                      class="w-full"
+                    />
+                  </UFormField>
+                  <UFormField label="Twitter">
+                    <UInput
+                      v-model="form.socialTwitter"
+                      placeholder="https://twitter.com/..."
+                      class="w-full"
+                    />
+                  </UFormField>
+                </div>
+              </div>
+            </template>
 
-          <div class="border-t pt-6">
-            <h4 class="text-lg font-semibold mb-4">Theme Colors</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <UFormField label="Primary Color" required>
-                <UInput
-                  v-model="form.themePrimaryColor"
-                  placeholder="#10B981"
-                />
-              </UFormField>
-              <UFormField label="Secondary Color" required>
-                <UInput
-                  v-model="form.themeSecondaryColor"
-                  placeholder="#34D399"
-                />
-              </UFormField>
-              <UFormField label="Gradient From">
-                <UInput
-                  v-model="form.themeGradientFrom"
-                  placeholder="#10B981"
-                />
-              </UFormField>
-              <UFormField label="Gradient To">
-                <UInput v-model="form.themeGradientTo" placeholder="#34D399" />
-              </UFormField>
-            </div>
-          </div>
+            <template #theme>
+              <div class="space-y-6 p-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <UFormField label="Primary Color" required>
+                    <UInput
+                      v-model="form.themePrimaryColor"
+                      placeholder="#10B981"
+                      class="w-full"
+                    />
+                  </UFormField>
+                  <UFormField label="Secondary Color" required>
+                    <UInput
+                      v-model="form.themeSecondaryColor"
+                      placeholder="#34D399"
+                      class="w-full"
+                    />
+                  </UFormField>
+                  <UFormField label="Gradient From">
+                    <UInput
+                      v-model="form.themeGradientFrom"
+                      placeholder="#10B981"
+                      class="w-full"
+                    />
+                  </UFormField>
+                  <UFormField label="Gradient To">
+                    <UInput
+                      v-model="form.themeGradientTo"
+                      placeholder="#34D399"
+                      class="w-full"
+                    />
+                  </UFormField>
+                </div>
+              </div>
+            </template>
+          </UTabs>
+        </form>
 
-          <div class="flex justify-end gap-3 pt-6 border-t">
+        <template #footer>
+          <div class="flex justify-end gap-3">
             <UButton
               type="button"
               color="neutral"
@@ -180,7 +251,7 @@
               {{ editingCompany ? "Update" : "Create" }}
             </UButton>
           </div>
-        </form>
+        </template>
       </UCard>
     </div>
 
@@ -259,6 +330,34 @@ const saving = ref(false);
 const showForm = ref(false);
 const editingCompany = ref<any>(null);
 const companies = ref<any[]>([]);
+
+const tabs = [
+  {
+    slot: "basic",
+    label: "Basic Info",
+    icon: "i-heroicons-information-circle",
+  },
+  {
+    slot: "hero",
+    label: "Hero Section",
+    icon: "i-heroicons-photo",
+  },
+  {
+    slot: "about",
+    label: "About",
+    icon: "i-heroicons-document-text",
+  },
+  {
+    slot: "contact",
+    label: "Contact",
+    icon: "i-heroicons-envelope",
+  },
+  {
+    slot: "theme",
+    label: "Theme",
+    icon: "i-heroicons-paint-brush",
+  },
+];
 
 const form = ref({
   name: "",

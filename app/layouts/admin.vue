@@ -15,7 +15,7 @@
             />
             <NuxtLink to="/admin" class="flex items-center gap-3">
               <div
-                class="w-10 h-10 bg-gradient-to-br from-green-600 to-emerald-500 rounded-lg flex items-center justify-center"
+                class="w-10 h-10 bg-linear-to-br from-green-600 to-emerald-500 rounded-lg flex items-center justify-center"
               >
                 <UIcon
                   name="i-heroicons-building-office-2"
